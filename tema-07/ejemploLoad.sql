@@ -1,0 +1,4 @@
+LOAD DATA INFILE 'C:\\Users\\08_1DAW_Alum\\Documents\\carrera_ubrique.csv'
+IGNORE INTO TABLE maratoon.registros FIELDS TERMINATED BY ';'
+OPTIONALLY ENCLOSED BY '\"' LINES TERMINATED BY '\n'
+IGNORE 2 LINES;

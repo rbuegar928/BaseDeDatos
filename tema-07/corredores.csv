@@ -1,0 +1,9 @@
+-- corredores.csv
+-- Generar un csv con las datos de 5 corredores
+-- tabla: corredores
+-- columnas: nombre, apellidos, ciudad, fechanaciemiento, sexo, club_id
+Carlos;Lopez Garcia;Sevilla;1995-03-12;H;1
+Ana;Moreno Ruiz;Cadiz;1988-07-25;M;3
+Luis;Fernandez Soto;Jerez;2000-11-05;H;5
+Marta;Gil Torres;Malaga;1975-01-30;M;4
+Pablo;Ramos Diaz;Granada;1960-09-18;H;1
