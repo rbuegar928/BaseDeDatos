@@ -81,7 +81,42 @@ DROP FUNCTION IF EXISTS NumerosPrimos $$
 
 CREATE FUNCTION NumerosPrimos(n INT)
 RETURNS INT
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE j INT;
+    DECLARE esPrimo BOOLEAN;
+    DECLARE suma INT DEFAULT 0;
 
+    WHILE i <= n DO
+
+        SET esPrimo = TRUE;
+
+        IF i > 1 THEN
+
+            SET j = 2;
+
+            WHILE j < i DO
+
+                IF i MOD j = 0 THEN
+                    SET esPrimo = FALSE;
+                END IF;
+
+                SET j = j + 1;
+
+            END WHILE;
+
+        END IF;
+
+        IF esPrimo = TRUE THEN
+            SET suma = suma + i;
+        END IF;
+
+        SET i = i + 1;
+
+    END WHILE;
+
+    RETURN suma;
+END $$
 
 -- ACTIVIDAD 5
 -- FUNCIÓN Factorial
@@ -111,3 +146,5 @@ BEGIN
     RETURN resultado;
 
 END$$
+
+DELIMITER ;
