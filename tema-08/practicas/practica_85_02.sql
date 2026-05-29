@@ -40,3 +40,32 @@ DROP TRIGGER IF EXISTS validar_movimiento$$
 CREATE TRIGGER validar_movimiento BEFORE INSERT ON movimientos
 FOR EACH ROW
 BEGIN
+    DECLARE saldo_actual DECIMAL(10,2);
+
+    -- obtener saldo de la cuenta
+    SELECT saldo INTO saldo_actual FROM cuentas WHERE id = NEW.cuenta_id;
+    -- reintegro
+    IF NEW.tipo = 'R' THEN
+
+        -- como los reintegros vienen en negativo,
+        -- comprobamos el valor absoluto
+        IF ABS(NEW.cantidad) > saldo_actual THEN SET NEW.cantidad = 0;
+
+        ELSE
+            -- actualizar saldo
+            UPDATE cuentas SET saldo = saldo + NEW.cantidad WHERE id = NEW.cuenta_id;
+
+        END IF;
+
+    END IF;
+    -- ingreso
+    IF NEW.tipo = 'I' THEN
+
+        -- sumar ingreso al saldo
+        UPDATE cuentas SET saldo = saldo + NEW.cantidad WHERE id = NEW.cuenta_id;
+
+    END IF;
+
+END$$
+
+DELIMITER ;
