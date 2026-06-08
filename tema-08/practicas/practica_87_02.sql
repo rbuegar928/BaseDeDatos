@@ -1,3 +1,4 @@
+-- Active: 1777278237175@@127.0.0.1@3306
 -- Practica_87_02
 -- Raúl Bueno García
 
@@ -8,7 +9,7 @@ USE geslibros;
 
 DELIMITER $$
 DROP FUNCTION IF EXISTS geslibros.importe_bruto_venta $$
-CREATE FUNCTION geslibros.importe_bruto_venta(p_venta_id INT)
+CREATE FUNCTION geslibros.importe_bruto_venta(p_venta_id INT UNSIGNED)
 RETURNS DECIMAL(10,2)
 BEGIN
     DECLARE v_importe_bruto DECIMAL(10,2);
